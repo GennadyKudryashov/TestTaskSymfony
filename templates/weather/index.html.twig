@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WeatherController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/var/www/src/Controller/WeatherController.php</code></li>
+        <li>Your template at <code>/var/www/templates/weather/index.html.twig</code></li>
+    </ul>
+</div>
+
+<div> 
+ Текущая погода в {{ weather_data['city'] }}, {{ weather_data['country'] }}:<br>
+    Температура: {{ weather_data['temperature'] }}°C<br>
+    Состояние: {{ weather_data['condition'] }}<br>
+    Влажность: {{ weather_data['humidity'] }}%<br>
+    Скорость ветра: {{ weather_data['wind_speed'] }} км/ч<br>
+    Последнее обновление: {{ weather_data['last_updated'] }}<br>
+</div>
+
+{% endblock %}
+ 
