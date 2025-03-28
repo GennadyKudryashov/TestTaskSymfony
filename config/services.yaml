@@ -4,7 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    weather.service.api.key : '%env(WEATHER_APIKEY)%'
+    weather.service.CURLOPT_URL : '%env(resolve:WEATHER_CURLOPT_URL)%'
+    weather.service.CURLOPT_RETURNTRANSFER : '%env(CURLOPT_RETURNTRANSFER)%'
+    weather.service.WEATHER_CURLOPT_TIMEOUT : '%env(WEATHER_CURLOPT_TIMEOUT)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -22,3 +25,9 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Service\WeatherService:
+        arguments:
+            $apiKey: '%weather.service.api.key%'
+            $url: '%weather.service.CURLOPT_URL%'
+            $returnTransfer: '%weather.service.CURLOPT_RETURNTRANSFER%'
+            $timeout: '%weather.service.WEATHER_CURLOPT_TIMEOUT%'
